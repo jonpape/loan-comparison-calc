@@ -40,7 +40,7 @@ def loan_payments(list_name, amount, term, rate, mth_interest, mth_payment):
             return total_interest
 
 
-def monthly_payment_calc(loan_amount, loan_term, loan_rate):
+'''def monthly_payment_calc(loan_amount, loan_term, loan_rate):
     """Calculates the monthly payment of a loan"""
     # fixed calculations for the length of loan
 
@@ -49,7 +49,7 @@ def monthly_payment_calc(loan_amount, loan_term, loan_rate):
     # calculates the monthly payment
     monthly_payment = npf.pmt(monthly_interest, loan_term, loan_amount) * -1
     # returns the monthly payment
-    return monthly_interest, monthly_payment
+    return monthly_interest, monthly_payment'''
 
 
 title_html = "<h1>Compare loan cost, interest & duration by making extra payments each month</h1>"
@@ -79,6 +79,12 @@ loan_data = {"loan1": {"amount": int(loan_amount1),
                        "total_interest": 0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
+# calculates the monthly interest
+loan_data["loan1"]["mth_interest"] = (loan_data["loan1"]["rate"] / 12) / 100
+# calculates the monthly payment
+loan_data["loan1"]["mth_interest"] = npf.pmt(loan_data["loan1"]["mth_interest"],
+                                             loan_data["loan1"]["term"],
+                                             loan_data["loan1"]["amount"]) * -1
 
 loan_amount2 = col2.text_input("Loan 2 amount: ", 40000)
 loan_term2 = col2.text_input("Loan 2 term (months): ", 72)
@@ -90,6 +96,12 @@ loan_data = {"loan2": {"amount": int(loan_amount2),
                        "total_interest": 0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
+# calculates the monthly interest
+loan_data["loan2"]["mth_interest"] = (loan_data["loan2"]["rate"] / 12) / 100
+# calculates the monthly payment
+loan_data["loan2"]["mth_interest"] = npf.pmt(loan_data["loan2"]["mth_interest"],
+                                             loan_data["loan2"]["term"],
+                                             loan_data["loan2"]["amount"]) * -1
 
 loan_amount3 = col3.text_input("Loan 3 amount: ", 40000)
 loan_term3 = col3.text_input("Loan 3 term (months): ", 60)
@@ -101,6 +113,12 @@ loan_data = {"loan3": {"amount": int(loan_amount3),
                        "total_interest": 0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
+# calculates the monthly interest
+loan_data["loan3"]["mth_interest"] = (loan_data["loan3"]["rate"] / 12) / 100
+# calculates the monthly payment
+loan_data["loan3"]["mth_interest"] = npf.pmt(loan_data["loan3"]["mth_interest"],
+                                             loan_data["loan3"]["term"],
+                                             loan_data["loan3"]["amount"]) * -1
 
 loan_amount4 = col4.text_input("Loan 4 amount: ", 40000)
 loan_term4 = col4.text_input("Loan 4 term (months): ", 36)
@@ -112,9 +130,15 @@ loan_data = {"loan4": {"amount": int(loan_amount4),
                        "total_interest": 0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
+# calculates the monthly interest
+loan_data["loan4"]["mth_interest"] = (loan_data["loan4"]["rate"] / 12) / 100
+# calculates the monthly payment
+loan_data["loan4"]["mth_interest"] = npf.pmt(loan_data["loan4"]["mth_interest"],
+                                             loan_data["loan4"]["term"],
+                                             loan_data["loan4"]["amount"]) * -1
 
 # calculate monthly payment
-loan_data["loan1"]["payment"], loan_data["loan1"]["mth_interest"] = monthly_payment_calc(loan_data["loan1"]["amount"],
+'''loan_data["loan1"]["payment"], loan_data["loan1"]["mth_interest"] = monthly_payment_calc(loan_data["loan1"]["amount"],
                                                                                           loan_data["loan1"]["term"],
                                                                                           loan_data["loan1"]["rate"], )
 loan_data["loan2"]["payment"], loan_data["loan2"]["mth_interest"] = monthly_payment_calc(loan_data["loan2"]["amount"],
@@ -125,7 +149,7 @@ loan_data["loan3"]["payment"], loan_data["loan3"]["mth_interest"] = monthly_paym
                                                                                          loan_data["loan3"]["rate"], )
 loan_data["loan4"]["payment"], loan_data["loan4"]["mth_interest"] = monthly_payment_calc(loan_data["loan4"]["amount"],
                                                                                          loan_data["loan4"]["term"],
-                                                                                         loan_data["loan4"]["rate"], )
+                                                                                         loan_data["loan4"]["rate"], )'''
 
 
 
