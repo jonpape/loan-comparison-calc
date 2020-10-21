@@ -7,7 +7,10 @@ def loan_payments(list_name, amount, term, rate, mth_interest, mth_payment):
     """ Function gets the list, principal, loan_term, and interest rate and
     returns a list with total paid and a list with interest paid."""
 
+    # variable for total interest
     total_interest = 0
+    # set first item in list to amount
+    list_name[0] = amount
 
     # variable calculations for the length of the loan
     for i in range(term):
@@ -125,14 +128,13 @@ loan_data["loan4"]["mth_interest"] = npf.pmt(loan_data["loan4"]["mth_interest"],
                                              loan_data["loan4"]["term"],
                                              loan_data["loan4"]["amount"]) * -1
 
-
 # list of lists for all loans of all payments
 loan1_payments = []
 loan2_payments = []
 loan3_payments = []
 loan4_payments = []
 
-#function loan payments creates the list for the payments and returns the total interest paid
+# function loan payments creates the list for the payments and returns the total interest paid
 loan_data["loan1"]["total_interest"] = loan_payments(loan1_payments,
                                                      loan_data["loan1"]["amount"],
                                                      loan_data["loan1"]["term"],
@@ -158,7 +160,6 @@ loan_data["loan4"]["total_interest"] = loan_payments(loan4_payments,
                                                      loan_data["loan4"]["mth_interest"],
                                                      loan_data["loan4"]["payment"])
 
-
 Chart_title = '<div style="text-align: center"><h2>Amount of principal ' \
               'by loan term (months).</h2></div'
 st.markdown(Chart_title, unsafe_allow_html=True)
@@ -177,17 +178,20 @@ under_chart_html = '<p>Loan 1 term is ' + str(loan_data["loan1"]["term"]) + ' mo
                    '</li><li>Total interest: $' + str(int(loan_data["loan1"]["total_interest"])) + '</li>' + \
                    '<li>Monthly payment: $' + str(int(loan_data["loan1"]["payment"])) + '</li></ul></block>'
 
-under_chart_html = under_chart_html + '<p>Loan 2 term is ' + str(loan_data["loan2"]["term"]) + ' months.</p><block><ul>' + \
+under_chart_html = under_chart_html + '<p>Loan 2 term is ' + str(
+    loan_data["loan2"]["term"]) + ' months.</p><block><ul>' + \
                    '<li>Total cost: $' + str(int(loan_data["loan2"]["amount"] + loan_data["loan2"]["total_interest"])) + \
                    '</li><li>Total interest: $' + str(int(loan_data["loan2"]["total_interest"])) + '</li>' + \
                    '<li>Monthly payment: $' + str(int(loan_data["loan2"]["payment"])) + '</li></ul></block>'
 
-under_chart_html = under_chart_html + '<p>Loan 3 term is ' + str(loan_data["loan3"]["term"]) + ' months.</p><block><ul>' + \
+under_chart_html = under_chart_html + '<p>Loan 3 term is ' + str(
+    loan_data["loan3"]["term"]) + ' months.</p><block><ul>' + \
                    '<li>Total cost: $' + str(int(loan_data["loan3"]["amount"] + loan_data["loan3"]["total_interest"])) + \
                    '</li><li>Total interest: $' + str(int(loan_data["loan3"]["total_interest"])) + '</li>' + \
                    '<li>Monthly payment: $' + str(int(loan_data["loan3"]["payment"])) + '</li></ul></block>'
 
-under_chart_html = under_chart_html + '<p>Loan 4 term is ' + str(loan_data["loan4"]["term"]) + ' months.</p><block><ul>' + \
+under_chart_html = under_chart_html + '<p>Loan 4 term is ' + str(
+    loan_data["loan4"]["term"]) + ' months.</p><block><ul>' + \
                    '<li>Total cost: $' + str(int(loan_data["loan4"]["amount"] + loan_data["loan4"]["total_interest"])) + \
                    '</li><li>Total interest: $' + str(int(loan_data["loan4"]["total_interest"])) + '</li>' + \
                    '<li>Monthly payment: $' + str(int(loan_data["loan4"]["payment"])) + '</li></ul></block>'
