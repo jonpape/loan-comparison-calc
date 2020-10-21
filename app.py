@@ -10,7 +10,7 @@ def loan_payments(list_name, amount, term, mth_interest, mth_payment):
     # variable for total interest
     total_interest = 0
     # set first item in list to amount
-    list_name[0] = amount
+    list_name.append(amount)
 
     # variable calculations for the length of the loan
     for i in range(term):
