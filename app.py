@@ -67,7 +67,7 @@ loan_rate1 = col1.text_input("Loan 1 interest rate: ", 4.80)
 loan_data = {"loan1": {"amount": int(loan_amount1),
                        "term": int(loan_term1),
                        "rate": float(loan_rate1),
-                       "total_interest": 0,
+                       "total_interest": 0.0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
 # calculates the monthly interest
@@ -84,7 +84,7 @@ loan_rate2 = col2.text_input("Loan 2 interest rate: ", 4.50)
 loan_data = {"loan2": {"amount": int(loan_amount2),
                        "term": int(loan_term2),
                        "rate": float(loan_rate2),
-                       "total_interest": 0,
+                       "total_interest": 0.0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
 # calculates the monthly interest
@@ -101,7 +101,7 @@ loan_rate3 = col3.text_input("Loan 3 interest rate: ", 4.10)
 loan_data = {"loan3": {"amount": int(loan_amount3),
                        "term": int(loan_term3),
                        "rate": float(loan_rate3),
-                       "total_interest": 0,
+                       "total_interest": 0.0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
 # calculates the monthly interest
@@ -118,7 +118,7 @@ loan_rate4 = col4.text_input("Loan 4 interest rate: ", 3.50)
 loan_data = {"loan4": {"amount": int(loan_amount4),
                        "term": int(loan_term4),
                        "rate": float(loan_rate4),
-                       "total_interest": 0,
+                       "total_interest": 0.0,
                        "mth_interest": 0.0,
                        "payment": 0.0}}
 # calculates the monthly interest
@@ -135,11 +135,7 @@ loan3_payments = []
 loan4_payments = []
 
 # function loan payments creates the list for the payments and returns the total interest paid
-loan_data["loan1"]["total_interest"] = loan_payments(loan1_payments,
-                                                     loan_data["loan1"]["amount"],
-                                                     loan_data["loan1"]["term"],
-                                                     loan_data["loan1"]["mth_interest"],
-                                                     loan_data["loan1"]["payment"])
+loan_data["loan1"]["total_interest"] = loan_payments(loan1_payments, loan_data["loan1"]["amount"], loan_data["loan1"]["term"], loan_data["loan1"]["mth_interest"], loan_data["loan1"]["payment"])
 
 loan_data["loan2"]["total_interest"] = loan_payments(loan2_payments,
                                                      loan_data["loan2"]["amount"],
