@@ -40,18 +40,6 @@ def loan_payments(list_name, amount, term, rate, mth_interest, mth_payment):
             return total_interest
 
 
-'''def monthly_payment_calc(loan_amount, loan_term, loan_rate):
-    """Calculates the monthly payment of a loan"""
-    # fixed calculations for the length of loan
-
-    # calculates the monthly interest
-    monthly_interest = (loan_rate / 12) / 100
-    # calculates the monthly payment
-    monthly_payment = npf.pmt(monthly_interest, loan_term, loan_amount) * -1
-    # returns the monthly payment
-    return monthly_interest, monthly_payment'''
-
-
 title_html = "<h1>Compare loan cost, interest & duration by making extra payments each month</h1>"
 st.markdown(title_html, unsafe_allow_html=True)
 
@@ -136,21 +124,6 @@ loan_data["loan4"]["mth_interest"] = (loan_data["loan4"]["rate"] / 12) / 100
 loan_data["loan4"]["mth_interest"] = npf.pmt(loan_data["loan4"]["mth_interest"],
                                              loan_data["loan4"]["term"],
                                              loan_data["loan4"]["amount"]) * -1
-
-# calculate monthly payment
-'''loan_data["loan1"]["payment"], loan_data["loan1"]["mth_interest"] = monthly_payment_calc(loan_data["loan1"]["amount"],
-                                                                                          loan_data["loan1"]["term"],
-                                                                                          loan_data["loan1"]["rate"], )
-loan_data["loan2"]["payment"], loan_data["loan2"]["mth_interest"] = monthly_payment_calc(loan_data["loan2"]["amount"],
-                                                                                         loan_data["loan2"]["term"],
-                                                                                         loan_data["loan2"]["rate"], )
-loan_data["loan3"]["payment"], loan_data["loan3"]["mth_interest"] = monthly_payment_calc(loan_data["loan3"]["amount"],
-                                                                                         loan_data["loan3"]["term"],
-                                                                                         loan_data["loan3"]["rate"], )
-loan_data["loan4"]["payment"], loan_data["loan4"]["mth_interest"] = monthly_payment_calc(loan_data["loan4"]["amount"],
-                                                                                         loan_data["loan4"]["term"],
-                                                                                         loan_data["loan4"]["rate"], )'''
-
 
 
 # list of lists for all loans of all payments
