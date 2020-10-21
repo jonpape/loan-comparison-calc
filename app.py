@@ -3,7 +3,7 @@ import numpy_financial as npf
 import pandas as pd
 
 
-def loan_payments(list_name, amount, term, rate, mth_interest, mth_payment):
+def loan_payments(list_name, amount, term, mth_interest, mth_payment):
     """ Function gets the list, principal, loan_term, and interest rate and
     returns a list with total paid and a list with interest paid."""
 
@@ -138,25 +138,24 @@ loan4_payments = []
 loan_data["loan1"]["total_interest"] = loan_payments(loan1_payments,
                                                      loan_data["loan1"]["amount"],
                                                      loan_data["loan1"]["term"],
-                                                     loan_data["loan1"]["rate"],
                                                      loan_data["loan1"]["mth_interest"],
                                                      loan_data["loan1"]["payment"])
+
 loan_data["loan2"]["total_interest"] = loan_payments(loan2_payments,
                                                      loan_data["loan2"]["amount"],
                                                      loan_data["loan2"]["term"],
-                                                     loan_data["loan2"]["rate"],
                                                      loan_data["loan2"]["mth_interest"],
                                                      loan_data["loan2"]["payment"])
+
 loan_data["loan3"]["total_interest"] = loan_payments(loan3_payments,
                                                      loan_data["loan3"]["amount"],
                                                      loan_data["loan3"]["term"],
-                                                     loan_data["loan3"]["rate"],
                                                      loan_data["loan3"]["mth_interest"],
                                                      loan_data["loan3"]["payment"])
+
 loan_data["loan4"]["total_interest"] = loan_payments(loan4_payments,
                                                      loan_data["loan4"]["amount"],
                                                      loan_data["loan4"]["term"],
-                                                     loan_data["loan4"]["rate"],
                                                      loan_data["loan4"]["mth_interest"],
                                                      loan_data["loan4"]["payment"])
 
