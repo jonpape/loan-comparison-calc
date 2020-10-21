@@ -69,9 +69,9 @@ col1, col2, col3, col4 = st.beta_columns(4)
 loan_information = {}
 
 # get inputs
-loan_amount1 = col1.text_input("Enter the total amount of your loan: ", 40000)
-loan_term1 = col1.text_input("Enter the length of your loan in months: ", 84)
-loan_rate1 = col1.text_input("Enter the interest rate of your loan: ", 4.80)
+loan_amount1 = col1.text_input("Loan 1 amount: ", 40000)
+loan_term1 = col1.text_input("Loan 1 term (months): ", 84)
+loan_rate1 = col1.text_input("Loan 1 interest rate: ", 4.80)
 
 loan_data = {"loan1": {"amount": int(loan_amount1),
                        "term": int(loan_term1),
@@ -80,9 +80,9 @@ loan_data = {"loan1": {"amount": int(loan_amount1),
                        "mth_interest": 0.0,
                        "payment": 0.0}}
 
-loan_amount2 = col2.text_input("Enter the total amount of your loan: ", 40000)
-loan_term2 = col2.text_input("Enter the length of your loan in months: ", 72)
-loan_rate2 = col2.text_input("Enter the interest rate of your loan: ", 4.50)
+loan_amount2 = col2.text_input("Loan 2 amount: ", 40000)
+loan_term2 = col2.text_input("Loan 2 term (months): ", 72)
+loan_rate2 = col2.text_input("Loan 2 interest rate: ", 4.50)
 
 loan_data = {"loan2": {"amount": int(loan_amount2),
                        "term": int(loan_term2),
@@ -91,9 +91,9 @@ loan_data = {"loan2": {"amount": int(loan_amount2),
                        "mth_interest": 0.0,
                        "payment": 0.0}}
 
-loan_amount3 = col3.text_input("Enter the total amount of your loan: ", 40000)
-loan_term3 = col3.text_input("Enter the length of your loan in months: ", 60)
-loan_rate3 = col3.text_input("Enter the interest rate of your loan: ", 4.10)
+loan_amount3 = col3.text_input("Loan 3 amount: ", 40000)
+loan_term3 = col3.text_input("Loan 3 term (months): ", 60)
+loan_rate3 = col3.text_input("Loan 3 interest rate: ", 4.10)
 
 loan_data = {"loan3": {"amount": int(loan_amount3),
                        "term": int(loan_term3),
@@ -102,9 +102,9 @@ loan_data = {"loan3": {"amount": int(loan_amount3),
                        "mth_interest": 0.0,
                        "payment": 0.0}}
 
-loan_amount4 = col4.text_input("Enter the total amount of your loan: ", 40000)
-loan_term4 = col4.text_input("Enter the length of your loan in months: ", 36)
-loan_rate4 = col4.text_input("Enter the interest rate of your loan: ", 3.50)
+loan_amount4 = col4.text_input("Loan 4 amount: ", 40000)
+loan_term4 = col4.text_input("Loan 4 term (months): ", 36)
+loan_rate4 = col4.text_input("Loan 4 interest rate: ", 3.50)
 
 loan_data = {"loan4": {"amount": int(loan_amount4),
                        "term": int(loan_term4),
