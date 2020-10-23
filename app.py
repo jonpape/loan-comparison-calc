@@ -43,16 +43,22 @@ def loan_payments(list_name, amount, term, mth_interest, mth_payment):
             return total_interest
 
 
-st.sidebar.markdown("Add another loan to compare: ")
-
+st.beta_set_page_config(
+    page_title="Compare up to four loans",
+    page_icon="💸",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    )
 
 # Add a slider to the sidebar:
 loan_number_slider = st.sidebar.slider('Select the number of loans to compare:', 2, 4, 3)
 
 
 st.title("Loan comparison tool")
-st.markdown("Compare four loans and see what has the lowest overall cost. Change amount, "
-            "length of loan (term), or interest rate.")
+st.markdown("Compare up to four loans and see what has the lowest overall cost. Change amount, "
+            "length of loan (term in months), or interest rate.")
+
+st.markdown("Change number of loans to compare using slider on sidebar.")
 
 st.markdown("Enter the loan information you would like to compare.")
 
