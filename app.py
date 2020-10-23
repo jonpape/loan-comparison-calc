@@ -43,7 +43,9 @@ def loan_payments(list_name, amount, term, mth_interest, mth_payment):
             return total_interest
 
 
-st.sidebar.markdown("Add loan")
+add_loan_4 = False
+
+st.sidebar.markdown("Add another loan to compare: ")
 add_loan_3 = st.sidebar.button("Loan 3")
 if add_loan_3:
     add_loan_4 = st.sidebar.button("Loan 4")
@@ -170,25 +172,36 @@ loan_data["loan2"]["total_interest"] = loan_payments(loan2_payments,
                                                      loan_data["loan2"]["mth_interest"],
                                                      loan_data["loan2"]["payment"])
 
-loan_data["loan3"]["total_interest"] = loan_payments(loan3_payments,
-                                                     loan_data["loan3"]["amount"],
-                                                     loan_data["loan3"]["term"],
-                                                     loan_data["loan3"]["mth_interest"],
-                                                     loan_data["loan3"]["payment"])
+if add_loan_3:
+    loan_data["loan3"]["total_interest"] = loan_payments(loan3_payments,
+                                                         loan_data["loan3"]["amount"],
+                                                         loan_data["loan3"]["term"],
+                                                         loan_data["loan3"]["mth_interest"],
+                                                         loan_data["loan3"]["payment"])
 
-loan_data["loan4"]["total_interest"] = loan_payments(loan4_payments,
-                                                     loan_data["loan4"]["amount"],
-                                                     loan_data["loan4"]["term"],
-                                                     loan_data["loan4"]["mth_interest"],
-                                                     loan_data["loan4"]["payment"])
+if add_loan_4:
+    loan_data["loan4"]["total_interest"] = loan_payments(loan4_payments,
+                                                         loan_data["loan4"]["amount"],
+                                                         loan_data["loan4"]["term"],
+                                                         loan_data["loan4"]["mth_interest"],
+                                                         loan_data["loan4"]["payment"])
 
 Chart_title = '<div style="text-align: center"><h2>Amount of principal ' \
               'by loan term (months).</h2></div'
 st.markdown(Chart_title, unsafe_allow_html=True)
 
-header = ['loan 1', 'loan 2', 'loan 3', 'loan 4']
+if add_loan_4:
+    header = ['loan 1', 'loan 2', 'loan 3', 'loan 4']
+    df_options = pd.DataFrame([loan1_payments, loan2_payments, loan3_payments, loan4_payments])
+elif add_loan_3:
+    header = ['loan 1', 'loan 2', 'loan 3']
+    df_options = pd.DataFrame([loan1_payments, loan2_payments, loan3_payments])
+else:
+    header = ['loan 1', 'loan 2']
+    df_options = pd.DataFrame([loan1_payments, loan2_payments])
 
-df_options = pd.DataFrame([loan1_payments, loan2_payments, loan3_payments, loan4_payments])
+
+
 df_transposed = df_options.transpose()
 df_transposed.columns = header
 chart_data = df_transposed
