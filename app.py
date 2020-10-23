@@ -43,8 +43,6 @@ def loan_payments(list_name, amount, term, mth_interest, mth_payment):
             return total_interest
 
 
-add_loan_4 = False
-
 st.sidebar.markdown("Add another loan to compare: ")
 
 
@@ -92,7 +90,7 @@ loan_data["loan1"]["mth_interest"] = (loan_data["loan1"]["rate"] / 12) / 100
 loan_data["loan1"]["payment"] = npf.pmt(loan_data["loan1"]["mth_interest"],
                                         loan_data["loan1"]["term"],
                                         loan_data["loan1"]["amount"]) * -1
-tcol2.subheader("Loan 1:")
+tcol2.subheader("Loan 2:")
 loan_amount2 = tcol2.text_input("Loan 2 amount: ", 40000)
 loan_term2 = tcol2.text_input("Loan 2 term (months): ", 72)
 loan_rate2 = tcol2.text_input("Loan 2 interest rate: ", 4.50)
@@ -113,8 +111,8 @@ loan_data["loan2"]["payment"] = npf.pmt(loan_data["loan2"]["mth_interest"],
                                         loan_data["loan2"]["term"],
                                         loan_data["loan2"]["amount"]) * -1
 
-if loan_number_slider == 3:
-    tcol3.subheader("Loan 1:")
+if loan_number_slider >= 3:
+    tcol3.subheader("Loan 3:")
     loan_amount3 = tcol3.text_input("Loan 3 amount: ", 40000)
     loan_term3 = tcol3.text_input("Loan 3 term (months): ", 60)
     loan_rate3 = tcol3.text_input("Loan 3 interest rate: ", 4.10)
@@ -136,7 +134,7 @@ if loan_number_slider == 3:
                                             loan_data["loan3"]["amount"]) * -1
 
 if loan_number_slider == 4:
-    tcol4.subheader("Loan 1:")
+    tcol4.subheader("Loan 4:")
     loan_amount4 = tcol4.text_input("Loan 4 amount: ", 40000)
     loan_term4 = tcol4.text_input("Loan 4 term (months): ", 36)
     loan_rate4 = tcol4.text_input("Loan 4 interest rate: ", 3.50)
@@ -176,7 +174,7 @@ loan_data["loan2"]["total_interest"] = loan_payments(loan2_payments,
                                                      loan_data["loan2"]["mth_interest"],
                                                      loan_data["loan2"]["payment"])
 
-if loan_number_slider == 3:
+if loan_number_slider >= 3:
     loan_data["loan3"]["total_interest"] = loan_payments(loan3_payments,
                                                          loan_data["loan3"]["amount"],
                                                          loan_data["loan3"]["term"],
@@ -197,10 +195,10 @@ st.markdown(Chart_title, unsafe_allow_html=True)
 if loan_number_slider == 4:
     header = ['loan 1', 'loan 2', 'loan 3', 'loan 4']
     df_options = pd.DataFrame([loan1_payments, loan2_payments, loan3_payments, loan4_payments])
-elif loan_number_slider == 3:
+if loan_number_slider >= 3:
     header = ['loan 1', 'loan 2', 'loan 3']
     df_options = pd.DataFrame([loan1_payments, loan2_payments, loan3_payments])
-else:
+if loan_number_slider >= 2:
     header = ['loan 1', 'loan 2']
     df_options = pd.DataFrame([loan1_payments, loan2_payments])
 
@@ -230,7 +228,7 @@ if loan_number_slider == 4:
     bcol3.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan3"]["total_interest"]))))
     bcol3.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan3"]["payment"]))))
 
-if loan_number_slider == 3:
+if loan_number_slider >= 3:
     bcol4.markdown(
         "Total cost: " + str("${:,.2f}".format(int(loan_data["loan4"]["amount"] + loan_data["loan4"]["total_interest"]))))
     bcol4.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan4"]["total_interest"]))))
