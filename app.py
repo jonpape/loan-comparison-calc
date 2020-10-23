@@ -43,15 +43,9 @@ def loan_payments(list_name, amount, term, mth_interest, mth_payment):
             return total_interest
 
 
-title_html = "<h1>Compare loan cost, interest & duration by making extra payments each month</h1>"
-st.markdown(title_html, unsafe_allow_html=True)
-
-page_text = "<p>It has always amazed me how paying a little more each month " + \
-            "can have a significant impact in the length of your loan.<p>" + \
-            "<p>This calculator was created to show how, if you pay a little" + \
-            " extra each month, you can significantly lower your total " + \
-            "loan terms by a lot.</p>"
-st.markdown(page_text, unsafe_allow_html=True)
+st.title("Loan comparison tool")
+st.markdown("Compare four loans and see what has the lowest overall cost. Change amount, "
+            "length of loan (term), or interest rate.")
 
 st.markdown("Enter the loan information you would like to compare.")
 
@@ -65,57 +59,81 @@ loan_amount1 = col1.text_input("Loan 1 amount: ", 40000)
 loan_term1 = col1.text_input("Loan 1 term (months): ", 84)
 loan_rate1 = col1.text_input("Loan 1 interest rate: ", 4.80)
 
-loan_data["loan1"] = {"amount": int(loan_amount1),
-                       "term": int(loan_term1),
-                       "rate": float(loan_rate1)}
+try:
+    loan_data["loan1"] = {"amount": int(loan_amount1),
+                          "term": int(loan_term1),
+                          "rate": float(loan_rate1)}
+except:
+    loan_data["loan1"] = {"amount": 0,
+                          "term": 0,
+                          "rate": 0}
+
 # calculates the monthly interest
 loan_data["loan1"]["mth_interest"] = (loan_data["loan1"]["rate"] / 12) / 100
 # calculates the monthly payment
 loan_data["loan1"]["payment"] = npf.pmt(loan_data["loan1"]["mth_interest"],
-                                             loan_data["loan1"]["term"],
-                                             loan_data["loan1"]["amount"]) * -1
+                                        loan_data["loan1"]["term"],
+                                        loan_data["loan1"]["amount"]) * -1
 
 loan_amount2 = col2.text_input("Loan 2 amount: ", 40000)
 loan_term2 = col2.text_input("Loan 2 term (months): ", 72)
 loan_rate2 = col2.text_input("Loan 2 interest rate: ", 4.50)
 
-loan_data["loan2"] = {"amount": int(loan_amount2),
-                       "term": int(loan_term2),
-                       "rate": float(loan_rate2)}
+try:
+    loan_data["loan2"] = {"amount": int(loan_amount2),
+                          "term": int(loan_term2),
+                          "rate": float(loan_rate2)}
+
+except:
+    loan_data["loan2"] = {"amount": 0,
+                          "term": 0,
+                          "rate": 0}
 # calculates the monthly interest
 loan_data["loan2"]["mth_interest"] = (loan_data["loan2"]["rate"] / 12) / 100
 # calculates the monthly payment
 loan_data["loan2"]["payment"] = npf.pmt(loan_data["loan2"]["mth_interest"],
-                                             loan_data["loan2"]["term"],
-                                             loan_data["loan2"]["amount"]) * -1
+                                        loan_data["loan2"]["term"],
+                                        loan_data["loan2"]["amount"]) * -1
 
 loan_amount3 = col3.text_input("Loan 3 amount: ", 40000)
 loan_term3 = col3.text_input("Loan 3 term (months): ", 60)
 loan_rate3 = col3.text_input("Loan 3 interest rate: ", 4.10)
 
-loan_data["loan3"] = {"amount": int(loan_amount3),
-                       "term": int(loan_term3),
-                       "rate": float(loan_rate3)}
+try:
+    loan_data["loan3"] = {"amount": int(loan_amount3),
+                          "term": int(loan_term3),
+                          "rate": float(loan_rate3)}
+except:
+    loan_data["loan3"] = {"amount": 0,
+                          "term": 0,
+                          "rate": 0}
+
 # calculates the monthly interest
 loan_data["loan3"]["mth_interest"] = (loan_data["loan3"]["rate"] / 12) / 100
 # calculates the monthly payment
 loan_data["loan3"]["payment"] = npf.pmt(loan_data["loan3"]["mth_interest"],
-                                             loan_data["loan3"]["term"],
-                                             loan_data["loan3"]["amount"]) * -1
+                                        loan_data["loan3"]["term"],
+                                        loan_data["loan3"]["amount"]) * -1
 
 loan_amount4 = col4.text_input("Loan 4 amount: ", 40000)
 loan_term4 = col4.text_input("Loan 4 term (months): ", 36)
 loan_rate4 = col4.text_input("Loan 4 interest rate: ", 3.50)
 
-loan_data["loan4"] = {"amount": int(loan_amount4),
-                       "term": int(loan_term4),
-                       "rate": float(loan_rate4)}
+try:
+    loan_data["loan4"] = {"amount": int(loan_amount4),
+                          "term": int(loan_term4),
+                          "rate": float(loan_rate4)}
+except:
+    loan_data["loan4"] = {"amount": 0,
+                          "term": 0,
+                          "rate": 0}
+
 # calculates the monthly interest
 loan_data["loan4"]["mth_interest"] = (loan_data["loan4"]["rate"] / 12) / 100
 # calculates the monthly payment
 loan_data["loan4"]["payment"] = npf.pmt(loan_data["loan4"]["mth_interest"],
-                                             loan_data["loan4"]["term"],
-                                             loan_data["loan4"]["amount"]) * -1
+                                        loan_data["loan4"]["term"],
+                                        loan_data["loan4"]["amount"]) * -1
 
 # list of lists for all loans of all payments
 loan1_payments = []
@@ -161,30 +179,31 @@ chart_data = df_transposed
 
 st.area_chart(chart_data)
 
-under_chart_html = '<p>Loan 1 term is ' + str(loan_data["loan1"]["term"]) + ' months.</p><block><ul>' + \
-                   '<li>Total cost: $' + str(int(loan_data["loan1"]["amount"] + loan_data["loan1"]["total_interest"])) + \
-                   '</li><li>Total interest: $' + str(int(loan_data["loan1"]["total_interest"])) + '</li>' + \
-                   '<li>Monthly payment: $' + str(int(loan_data["loan1"]["payment"])) + '</li></ul></block>'
+col1.subheader("Loan 1:")
+col1.markdown(
+    "Total cost: " + str("${:,.2f}".format(int(loan_data["loan1"]["amount"] + loan_data["loan1"]["total_interest"]))))
+col1.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan1"]["total_interest"]))))
+col1.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan1"]["payment"]))))
 
-under_chart_html = under_chart_html + '<p>Loan 2 term is ' + str(
-    loan_data["loan2"]["term"]) + ' months.</p><block><ul>' + \
-                   '<li>Total cost: $' + str(int(loan_data["loan2"]["amount"] + loan_data["loan2"]["total_interest"])) + \
-                   '</li><li>Total interest: $' + str(int(loan_data["loan2"]["total_interest"])) + '</li>' + \
-                   '<li>Monthly payment: $' + str(int(loan_data["loan2"]["payment"])) + '</li></ul></block>'
+col2.subheader("Loan 2:")
+col2.markdown(
+    "Total cost: " + str("${:,.2f}".format(int(loan_data["loan2"]["amount"] + loan_data["loan2"]["total_interest"]))))
+col2.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan2"]["total_interest"]))))
+col2.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan2"]["payment"]))))
 
-under_chart_html = under_chart_html + '<p>Loan 3 term is ' + str(
-    loan_data["loan3"]["term"]) + ' months.</p><block><ul>' + \
-                   '<li>Total cost: $' + str(int(loan_data["loan3"]["amount"] + loan_data["loan3"]["total_interest"])) + \
-                   '</li><li>Total interest: $' + str(int(loan_data["loan3"]["total_interest"])) + '</li>' + \
-                   '<li>Monthly payment: $' + str(int(loan_data["loan3"]["payment"])) + '</li></ul></block>'
+col3.subheader("Loan 3:")
+col3.markdown(
+    "Total cost: " + str("${:,.2f}".format(int(loan_data["loan3"]["amount"] + loan_data["loan3"]["total_interest"]))))
+col3.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan3"]["total_interest"]))))
+col3.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan3"]["payment"]))))
 
-under_chart_html = under_chart_html + '<p>Loan 4 term is ' + str(
-    loan_data["loan4"]["term"]) + ' months.</p><block><ul>' + \
-                   '<li>Total cost: $' + str(int(loan_data["loan4"]["amount"] + loan_data["loan4"]["total_interest"])) + \
-                   '</li><li>Total interest: $' + str(int(loan_data["loan4"]["total_interest"])) + '</li>' + \
-                   '<li>Monthly payment: $' + str(int(loan_data["loan4"]["payment"])) + '</li></ul></block>'
+col4.subheader("Loan 4:")
+col4.markdown(
+    "Total cost: " + str("${:,.2f}".format(int(loan_data["loan4"]["amount"] + loan_data["loan4"]["total_interest"]))))
+col4.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan4"]["total_interest"]))))
+col4.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan4"]["payment"]))))
 
-under_chart_html = under_chart_html + '<br><br><br><p>Website is for entertainment purposes only. ' + \
+under_chart_html = '<br><br><br><p>Website is for entertainment purposes only. ' + \
                    'Created by <a href="http://jonpape.com">Jon Pape</a>.</p></block>'
 
 st.markdown(under_chart_html, unsafe_allow_html=True)
