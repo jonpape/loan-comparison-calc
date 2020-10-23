@@ -212,31 +212,30 @@ st.area_chart(chart_data)
 
 
 bcol1.markdown(
-    "Total cost: " + str("${:,.2f}".format(int(loan_data["loan1"]["amount"]
-                                               + loan_data["loan1"]["total_interest"]))))
-bcol1.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan1"]["total_interest"]))))
-bcol1.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan1"]["payment"]))))
+    "Total cost: " + str("${:,.2f}".format(loan_data["loan1"]["amount"]
+                                               + loan_data["loan1"]["total_interest"])))
+bcol1.markdown("Total Interest: " + str("${:,.2f}".format(loan_data["loan1"]["total_interest"])))
+bcol1.markdown("Monthly payment: " + str("${:,.2f}".format(loan_data["loan1"]["payment"])))
 
 
 bcol2.markdown(
-    "Total cost: " + str("${:,.2f}".format(int(loan_data["loan2"]["amount"]
-                                               + loan_data["loan2"]["total_interest"]))))
-bcol2.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan2"]["total_interest"]))))
-bcol2.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan2"]["payment"]))))
+    "Total cost: " + str("${:,.2f}".format(loan_data["loan2"]["amount"]
+                                               + loan_data["loan2"]["total_interest"])))
+bcol2.markdown("Total Interest: " + str("${:,.2f}".format(loan_data["loan2"]["total_interest"])))
+bcol2.markdown("Monthly payment: " + str("${:,.2f}".format(loan_data["loan2"]["payment"])))
 
 if loan_number_slider >= 3:
     bcol3.markdown(
-        "Total cost: " + str("${:,.2f}".format(int(loan_data["loan3"]["amount"]
-                                                   + loan_data["loan3"]["total_interest"]))))
-    bcol3.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan3"]["total_interest"]))))
-    bcol3.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan3"]["payment"]))))
-
+        "Total cost: " + str("${:,.2f}".format(loan_data["loan3"]["amount"]
+                                                   + loan_data["loan3"]["total_interest"])))
+    bcol3.markdown("Total Interest: " + str("${:,.2f}".format(loan_data["loan3"]["total_interest"])))
+    bcol3.markdown("Monthly payment: " + str("${:,.2f}".format(loan_data["loan3"]["payment"])))
 if loan_number_slider == 4:
     bcol4.markdown(
-        "Total cost: " + str("${:,.2f}".format(int(loan_data["loan4"]["amount"]
-                                                   + loan_data["loan4"]["total_interest"]))))
-    bcol4.markdown("Total Interest: " + str("${:,.2f}".format(int(loan_data["loan4"]["total_interest"]))))
-    bcol4.markdown("Monthly payment: " + str("${:,.2f}".format(int(loan_data["loan4"]["payment"]))))
+        "Total cost: " + str("${:,.2f}".format(loan_data["loan4"]["amount"]
+                                                   + loan_data["loan4"]["total_interest"])))
+    bcol4.markdown("Total Interest: " + str("${:,.2f}".format(loan_data["loan4"]["total_interest"])))
+    bcol4.markdown("Monthly payment: " + str("${:,.2f}".format(loan_data["loan4"]["payment"])))
 
 under_chart_html = '<br><br><br><p>Website is for entertainment purposes only. ' + \
                    'Created by <a href="http://jonpape.com">Jon Pape</a>.</p></block>'
