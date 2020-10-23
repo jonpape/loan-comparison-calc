@@ -1,3 +1,6 @@
+# created by Jon Pape
+# 2020/10/22
+
 import streamlit as st
 import numpy_financial as npf
 import pandas as pd
