@@ -102,8 +102,8 @@ loan_data["loan1"]["payment"] = npf.pmt(loan_data["loan1"]["mth_interest"],
                                         loan_data["loan1"]["amount"]) * -1
 tcol2.subheader("Loan 2:")
 loan_amount2 = tcol2.text_input("Loan 2 amount: ", 400000)
-loan_term2 = tcol2.text_input("Loan 2 term (months): ", 240)
-loan_rate2 = tcol2.text_input("Loan 2 interest rate: ", 2.75)
+loan_term2 = tcol2.text_input("Loan 2 term (months): ", 360)
+loan_rate2 = tcol2.text_input("Loan 2 interest rate: ", 4.75)
 
 try:
     loan_data["loan2"] = {"amount": int(loan_amount2),
@@ -124,8 +124,8 @@ loan_data["loan2"]["payment"] = npf.pmt(loan_data["loan2"]["mth_interest"],
 if loan_number_slider >= 3:
     tcol3.subheader("Loan 3:")
     loan_amount3 = tcol3.text_input("Loan 3 amount: ", 400000)
-    loan_term3 = tcol3.text_input("Loan 3 term (months): ", 180)
-    loan_rate3 = tcol3.text_input("Loan 3 interest rate: ", 2.75)
+    loan_term3 = tcol3.text_input("Loan 3 term (months): ", 360)
+    loan_rate3 = tcol3.text_input("Loan 3 interest rate: ", 6.75)
 
     try:
         loan_data["loan3"] = {"amount": int(loan_amount3),
@@ -146,8 +146,8 @@ if loan_number_slider >= 3:
 if loan_number_slider == 4:
     tcol4.subheader("Loan 4:")
     loan_amount4 = tcol4.text_input("Loan 4 amount: ", 400000)
-    loan_term4 = tcol4.text_input("Loan 4 term (months): ", 144)
-    loan_rate4 = tcol4.text_input("Loan 4 interest rate: ", 2.75)
+    loan_term4 = tcol4.text_input("Loan 4 term (months): ", 360)
+    loan_rate4 = tcol4.text_input("Loan 4 interest rate: ", 8.00)
 
     try:
         loan_data["loan4"] = {"amount": int(loan_amount4),
