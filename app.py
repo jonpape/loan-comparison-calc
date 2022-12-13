@@ -57,14 +57,14 @@ st.beta_set_page_config(
 loan_number_slider = st.sidebar.slider('Select the number of loans to compare:', 2, 4, 3)
 
 
-st.title("<h1>Loan comparison tool</h1>")
+st.title("<h1>Loan comparison tool</h1>", unsafe_allow_html=True)
 st.markdown("<p><a href='https://jonpape.com/#projects'>View other projects</a></p>" +\
             "<p>Compare up to four loans and see what has the lowest overall cost. Change amount, " +\
             "length of loan (term in months), or interest rate.</p>", unsafe_allow_html=True)
 
-st.markdown("<p>Change number of loans to compare using slider on sidebar.</p>")
+st.markdown("<p>Change number of loans to compare using slider on sidebar.</p>", unsafe_allow_html=True)
 
-st.markdown("<p>Enter the loan information you would like to compare.</p>")
+st.markdown("<p>Enter the loan information you would like to compare.</p>", unsafe_allow_html=True)
 
 if loan_number_slider == 4:
     tcol1, tcol2, tcol3, tcol4 = st.beta_columns(4)
