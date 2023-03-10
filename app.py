@@ -46,7 +46,7 @@ def loan_payments(list_name, amount, term, mth_interest, mth_payment):
             return total_interest
 
 
-st.beta_set_page_config(
+st.set_page_config(
     page_title="Compare up to four loans",
     page_icon="💸",
     layout="wide",
